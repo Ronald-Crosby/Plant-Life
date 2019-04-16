@@ -68,6 +68,11 @@ input, textarea, select {
 
 /* main code start */
 
+@keyframes fade {
+    0% {opacity: 0};
+    100% {opacity: 1};
+}
+
 @font-face {
     font-family: "IBM Plex Mono";
     src: url(assets/ibm-plex-mono.woff2), url(assets/ibm-plex-mono.woff);
@@ -80,23 +85,138 @@ input, textarea, select {
 
 body {
     font-family: "IBM Plex Mono";
-    font-size: 1.3em;
+    font-size: 1.1em;
     line-height: 1.6;
 
     background-color: #ffffff;
     color: #2a2a2a;
+    overflow-x: hidden;
+
+    --black: #2a2a2a;
+    --green: #00b98d;
 }
 
 nav {
     position: fixed;
     left: 0;
     top: 0;
-    width: 240px;
+    width: 260px;
     height: 100vh;
+    text-align: left;
+    padding-left: 2em;
     background-color: #00b98d;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;    
 }
 
+nav a {
+    margin-top: 10px;
+    margin-bottom: 10px; 
+    color: #ffffff;
+    text-decoration: none;    
+    font-family: "Young Serif";
+    font-size: 1.4em;
+}
 
+main {
+    z-index: 1;
+    position: relative;
+    background-color: #ffffff;
+    min-height: 100vh;        
+    transition: transform 0.5s ease;
+    box-shadow: 0 0 10px var(--black);
+}
+
+main.open {
+    transform: translateX(260px);
+}
+
+div.menu-close {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    z-index: 1;
+}
+
+a.toggle-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 3em;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--black);
+    line-height: 1;
+    font-size: 0.8em;
+    z-index: 1;
+}
+
+.toggle-nav img {
+    vertical-align: center;
+    margin-right: 10px;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+section div {
+    margin: 2em;
+    max-width: 25vw;
+}
+
+section div.content {
+    z-index: 1;
+}
+
+section div h1 {
+    font-family: "Young Serif";
+    font-weight: 700;
+    font-size: 2.5em;
+}
+
+section div p {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+section div a {
+    display: inline-block;
+    background-color: var(--green);
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.8em;
+    padding: 1em 2em;
+    margin-top: 1em;
+    border-radius: 0.3em;
+}
+
+div.slides {
+    width: 100%;
+    height: 475px;
+    position: relative;
+    cursor: pointer;
+}
+
+div.slides img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease;
+}
+
+div.slides img:first-child {
+    z-index: 1;
+}
 
 
 
